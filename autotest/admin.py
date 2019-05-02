@@ -1,5 +1,5 @@
 from django.contrib import admin
-from autotest.models import Autotest, Responses
+from autotest.models import Autotest, Responses, DataFile
 from autotest.domains import generate_responses_from_spreadsheets
 
 
@@ -15,3 +15,4 @@ class AutotestAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Autotest, AutotestAdmin)
 admin.site.register(Responses)
+admin.site.register(DataFile)

@@ -130,3 +130,14 @@ class Responses(models.Model):
             i2=self.key_max_second,
             p2=self.percent_max_second,
         )
+
+
+class DataFile(models.Model):
+    key_file = models.CharField(max_length=200, unique=True)
+    data = models.FileField()
+
+    def __str__(self):
+        return '{k} - {u}'.format(
+            k=self.key_file,
+            u=self.data.url,
+        )

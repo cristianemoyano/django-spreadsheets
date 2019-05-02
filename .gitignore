@@ -105,3 +105,4 @@ venv.bak/
 
 google_sheets/*.json
 google_sheets/*.csv
+media/
