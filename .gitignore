@@ -103,4 +103,5 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-google_sheets/token.json
+google_sheets/*.json
+google_sheets/*.csv
