@@ -42,17 +42,20 @@
     <div class="album py-5 bg-light">
       <div class="container">
 
-        <div class="card mb-3">
-          <div class="card-header">
-            Fuente
+        {% if autotest %}
+          <div class="card mb-3">
+            <div class="card-header">
+              Fuente
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ autotest.title }}</h5>
+              <p class="card-text">{{autotest.observaciones}}</p>
+              <a href="{{ autotest.link_formulario }}" target="_blank" class="btn btn-primary">Link a la Autoevaluación</a>
+              <a href="{{ autotest.link_respuestas }}" target="_blank" class="btn btn-primary">Link a las respuestas</a>
+            </div>
           </div>
-          <div class="card-body">
-            <h5 class="card-title">{{ autotest.title }}</h5>
-            <p class="card-text">{{autotest.observaciones}}</p>
-            <a href="{{ autotest.link_formulario }}" target="_blank" class="btn btn-primary">Link a la Autoevaluación</a>
-            <a href="{{ autotest.link_respuestas }}" target="_blank" class="btn btn-primary">Link a las respuestas</a>
-          </div>
-        </div>
+        {% endif %}
+
 
         <div class="card mb-3">
           <div class="card-header">
@@ -60,18 +63,7 @@
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              <p>Puedes buscar por Nombre y/o por DNI
-
-              </p>
-
               <form class="form-inline mt-3" method="get" action="{% url 'response-list' %}">
-                <label class="sr-only" for="name">Nombre</label>
-                <div class="input-group mb-2 mr-sm-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">Nombre</div>
-                  </div>
-                  <input type="text" class="form-control" id="name" placeholder="Juan" value='{{name}}' name="name">
-                </div>
                 <label class="sr-only" for="dni">DNI</label>
                 <div class="input-group mb-2 mr-sm-2">
                   <div class="input-group-prepend">
@@ -108,7 +100,9 @@
                   <td>{{ response.marca_temporal }}</td>
                 </tr>
         {% empty %}
-            <li>No hemos encontrado respuestas para el DNI: {{dni}} o {{name}}.</li>
+            <div class="alert alert-info" role="alert">
+                Ingrese un DNI correcto.
+            </div>
         {% endfor %}
           </tbody>
         </table>
