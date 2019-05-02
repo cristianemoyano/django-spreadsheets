@@ -3,7 +3,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import csv
 import os
 dirname = os.path.dirname(__file__)
-filename = os.path.join(dirname, 'SpreadSheetsPy-2195a5d9f855.json')
+filename = os.path.join(dirname, os.getenv('TOKEN_FILE_NAME'))
 
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 
